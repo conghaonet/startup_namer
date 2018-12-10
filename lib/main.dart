@@ -60,8 +60,10 @@ class RandomWordsState extends State<RandomWords> {
           // 这可以计算出 ListView 中减去分隔线后的实际单词对数量
           final int index = i ~/ 2;
           if(index < 100) {
+            // 如果是建议列表中最后一个单词对
             if(index >= _suggestions.length) {
-              _suggestions.addAll(generateWordPairs().take(1));
+              // ...接着再生成10个单词对，然后添加到建议列表
+              _suggestions.addAll(generateWordPairs().take(10));
             }
             return _buildRow(index, _suggestions[index]);
           }
